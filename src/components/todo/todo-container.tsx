@@ -4,7 +4,7 @@ import { Dispatch } from "redux";
 import * as MyTypes from "MyTypes";
 import { actionTypes } from "../../redux/actions";
 import { RootState } from "../../redux/reducers";
-import {} from "../../components/todo/todo-item"
+import TodoItem from "../../components/todo/todo-item";
 
 interface TodoContainerState {
   todoInput: string;
@@ -37,6 +37,7 @@ class TodoContainer extends React.Component<
 
   private handleButtonClick = (): void => {
     this.props.addTodo(this.state.todoInput);
+    console.log(this.state.todoInput)
     this.setState({
       todoInput: ""
     });
@@ -54,7 +55,14 @@ class TodoContainer extends React.Component<
       todoJSX = <p>No Todos</p>;
     } else {
       todoJSX = this.props.todoList.map((item: string, idx: number) => {
-        return <>Item</>;
+        return (
+          <TodoItem
+            key={idx}
+            idx={idx}
+            item={item}
+            handleDelete={this.props.deleteTodo}
+          />
+        );
       });
     }
 

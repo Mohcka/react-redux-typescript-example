@@ -21,13 +21,14 @@ export const todoReducer = (
       return {
         ...state,
         count: state.count + 1,
-        lsit: [...state.list, action.payload]
+        list: [...state.list, action.payload]
       };
     }
 
     case actionTypes.DELETE: {
       const oldList = [...state.list];
-      const newList = oldList.splice(action.payload, 1);
+      oldList.splice(action.payload, 1);
+      const newList = oldList;
       return {
         ...state,
         count: state.count - 1,

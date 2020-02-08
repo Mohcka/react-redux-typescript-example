@@ -5,8 +5,7 @@ interface TodoItemProps {
   idx: number;
   handleDelete: (idx: number) => void;
 }
-
-export const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
+const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
   return (
     <span>
       {props.item}
@@ -14,3 +13,5 @@ export const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
     </span>
   );
 };
+
+export default TodoItem
